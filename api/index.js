@@ -1,4 +1,5 @@
 const express = require("express");
+var cors = require('cors')
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
@@ -11,6 +12,7 @@ const path = require("path");
 
 dotenv.config();
 app.use(express.json());
+app.use(cors())
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
@@ -42,6 +44,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(5001, () => {
+app.listen(5002, () => {
   console.log("Backend is running.");
 });
