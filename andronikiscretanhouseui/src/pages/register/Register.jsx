@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./register.css";
+import configData from "../../conf.json"
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -13,12 +14,12 @@ export default function Register() {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post("http://localhost:5002/auth/register", {
+      const res = await axios.post(configData.API_URL + "/auth/register", {
         username,
         email,
         password,
       });
-      res.data && window.location.replace("http://localhost:5002/auth/login");
+      res.data && window.location.replace(configData.API_URL + "/auth/login");
     } catch (err) {
       setError(true);
     }

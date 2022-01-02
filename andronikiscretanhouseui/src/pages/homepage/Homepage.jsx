@@ -5,6 +5,7 @@ import Posts from "../../components/posts/Posts";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./homepage.css";
 import axios from "axios";
+import configData from "../../conf.json"
 
 export default function Homepage() {
   const [posts, setPosts] = useState([])
@@ -12,7 +13,7 @@ export default function Homepage() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("http://localhost:5002/post" + search);
+      const res = await axios.get(configData.API_URL + "/post" + search);
       console.log("posts ", res)
       setPosts(res.data);
     };

@@ -2,13 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
+import configData from "../../conf.json"
 
 export default function Sidebar() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("http://localhost:5002/category");
+      const res = await axios.get(configData.API_URL + "/category");
       setCats(res.data);
     };
     getCats();
